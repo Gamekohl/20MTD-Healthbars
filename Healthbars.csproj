@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Healtbars</AssemblyName>
+    <Description>Extension to show healthbars above enemies</Description>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Variables">
+    <!-- SET BELOW TO GAME BASE DIRECTORY-->
+    <GameDir>B:\Steam\steamapps\common\20MinuteTillDawn</GameDir>
+    <BepInExDir>$(GameDir)\BepInEx</BepInExDir>
+    <GameLibDir>$(GameDir)\MinutesTillDawn_Data\Managed</GameLibDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Core" Version="5.*" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
+    <PackageReference Include="UnityEngine.Modules" Version="2019.4.40" IncludeAssets="compile" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(GameLibDir)/Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(GameLibDir)/UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <!--Automatic deploy-->
+  <Target Name="Deploy" AfterTargets="Build">
+      <Copy
+          SourceFiles="@(MainAssembly)" DestinationFolder="$(BepInExDir)\plugins"
+      />
+  </Target>
+</Project>
