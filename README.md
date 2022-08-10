@@ -9,3 +9,10 @@ A [BepInEx](https://github.com/BepInEx/BepInEx/releases) plugin for adding healt
 
 ## Changelog
 - v.1.0.: Release
+
+## Contributors
+<a href = "https://github.com/Gamekohl/20MTD-Healthbars/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo=Gamekohl/20MTD-Healthbars"/>
+</a>
+
+Made with [contributors-img](https://contrib.rocks).
