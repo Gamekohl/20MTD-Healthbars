@@ -10,26 +10,13 @@ namespace Healthbars
 {
     internal class ObjectPoolerPatch
     {
-        private static List<string> tagList = new List<string> {
-            "BrainMonster",
-            "Boomer",
-            "ElderBrain",
-            "EyeMonster",
-            "Lamprey",
-            "WingedMonster",
-            "SpawnerMonster",
-            "ShubNiggurath",
-            "Shoggoth"
-        };
-
         [HarmonyPatch(typeof(ObjectPooler), "Awake")]
         [HarmonyPrefix]
         static void AwakePrefix(ref ObjectPooler __instance)
         {
             foreach (ObjectPoolItem objectPoolItem in __instance.itemsToPool)
             {
-                if (tagList.Contains(objectPoolItem.tag))
-                {
+                if(objectPoolItem.objectToPool.GetComponent<Health>() != null) {
                     TryAddHealthBarComponent(objectPoolItem.objectToPool.gameObject);
                 }
             }
@@ -39,8 +26,7 @@ namespace Healthbars
         [HarmonyPrefix]
         static bool AddObjectPrefix(string tag, GameObject GO, int amt, bool exp)
         {
-            if (tagList.Contains(tag))
-            {
+            if(GO.GetComponent<Health>() != null) {
                 TryAddHealthBarComponent(GO);
             }
 
