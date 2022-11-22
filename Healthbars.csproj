@@ -42,4 +42,27 @@
           SourceFiles="@(MainAssembly)" DestinationFolder="$(BepInExDir)\plugins"
       />
   </Target>
+  
+	<!--Release packaging-->
+	<Target Name="Package" AfterTargets="Publish">
+		<MakeDir
+			Directories="$(MSBuildProjectDirectory)\release"
+		/>
+		<Copy
+			SourceFiles="@(MainAssembly)" DestinationFolder="$(MSBuildProjectDirectory)\release"
+		/>
+		<Copy
+			SourceFiles="
+				$(MSBuildProjectDirectory)\README.md;
+				$(MSBuildProjectDirectory)\icon.png;
+				$(MSBuildProjectDirectory)\manifest.json
+			"
+			DestinationFolder="$(MSBuildProjectDirectory)\release"
+		/>
+		<ZipDirectory
+			SourceDirectory="$(MSBuildProjectDirectory)\release"
+			DestinationFile="$(MSBuildProjectDirectory)\$(AssemblyName)-v$(Version).zip"
+			Overwrite="true"
+		/>
+	</Target>
 </Project>
