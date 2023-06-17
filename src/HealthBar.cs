@@ -39,7 +39,7 @@ namespace Healthbars
             healthBar = imgGameObject.AddComponent<RectTransform>();
             healthBar.transform.SetParent(canvasGameObject.transform);
             healthBar.localScale = Vector2.one;
-            healthBar.anchoredPosition = new Vector2(0, gameObject.GetComponentInParent<SpriteRenderer>().bounds.size.y / 2);
+            healthBar.anchoredPosition = new Vector2(0, gameObject.GetComponentInParent<SpriteRenderer>().size.y / 2);
             healthBar.sizeDelta = new Vector2(1, 0.1f);
 
             Image image = imgGameObject.AddComponent<Image>();

@@ -1,6 +1,6 @@
 {
     "name": "Healthbars",
-    "version_number": "1.0.1",
+    "version_number": "1.0.2",
     "website_url": "https://github.com/Gamekohl/20MTD-Healthbars",
     "description": "Adds healthbars to all enemies.",
     "dependencies": ["BepInExPackMTD-BepInExPack_20MTD-1.0.0"]
