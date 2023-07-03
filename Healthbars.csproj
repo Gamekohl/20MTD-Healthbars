@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Healtbars</AssemblyName>
+    <AssemblyName>Healthbars</AssemblyName>
     <Description>Extension to show healthbars above enemies</Description>
     <Version>1.0.3</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -11,7 +11,7 @@
 
   <PropertyGroup Label="Variables">
     <!-- SET BELOW TO GAME BASE DIRECTORY-->
-    <GameDir>B:\Steam\steamapps\common\20MinuteTillDawn</GameDir>
+    <GameDir>D:\SteamLibrary\steamapps\common\20MinuteTillDawn</GameDir>
     <BepInExDir>$(GameDir)\BepInEx</BepInExDir>
     <GameLibDir>$(GameDir)\MinutesTillDawn_Data\Managed</GameLibDir>
   </PropertyGroup>

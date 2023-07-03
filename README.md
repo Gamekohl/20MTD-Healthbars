@@ -11,7 +11,7 @@ A [BepInEx](https://github.com/BepInEx/BepInEx/releases) plugin for adding healt
 - v.1.0.3:  Fixed memory leak
 - v.1.0.2:  Fixed healthbars having the wrong height in some cases
 - v.1.0.1:  Compatibility with new monsters
-- v.1.0.:   Release
+- v.1.0.0:   Release
 
 ## Contributors
 <a href = "https://github.com/Gamekohl/20MTD-Healthbars/graphs/contributors">
