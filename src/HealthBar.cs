@@ -28,6 +28,17 @@ namespace Healthbars
             animation = imgGameObject.AddComponent<Animation>();
             animationClip = new AnimationClip();
             animationClip.legacy = true;
+
+            health = GetComponentInParent<Health>();
+            onHPChanged += UpdateHP;
+
+            if (health is not null)
+            {
+                health.onHealthChange.AddListener(onHPChanged);
+
+                if (animation.GetClipCount() == 0)
+                    animation.AddClip(animationClip, "HPAnim");
+            }
         }
 
         private void AttachHealthbar()
@@ -47,30 +58,14 @@ namespace Healthbars
             imgGameObject.transform.SetParent(canvasGameObject.transform);
             canvasGameObject.transform.SetParent(gameObject.transform);
 
-            health = GetComponentInParent<Health>();
-            onHPChanged += UpdateHP;
-
-            if (health is not null)
-                health.onHealthChange.AddListener(onHPChanged);
-
             initRotation = canvasGameObject.transform.rotation;
         }
 
         private void UpdateHP(int hp)
         {
-            if (health is not null)
-            {
-                AnimationCurve animationCurve = AnimationCurve.EaseInOut(0f, healthBar.sizeDelta.x, .5f, (float)hp / health.maxHP);
-                animationClip.SetCurve("", typeof(RectTransform), "m_SizeDelta.x", animationCurve);
-
-                if (animation.GetClipCount() > 0)
-                {
-                    animation.RemoveClip(animationClip);
-                }
-
-                animation.AddClip(animationClip, "HPAnim");
-                animation.Play("HPAnim");
-            }
+            AnimationCurve animationCurve = AnimationCurve.EaseInOut(0f, healthBar.sizeDelta.x, .5f, (float)hp / health.maxHP);
+            animation.GetClip("HPAnim").SetCurve("", typeof(RectTransform), "m_SizeDelta.x", animationCurve);
+            animation.Play("HPAnim");
         }
 
         //lock canvas rotation to prevent healthbars from orbiting spinny enemies
