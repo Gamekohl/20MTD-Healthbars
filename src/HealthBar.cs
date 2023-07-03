@@ -63,6 +63,7 @@ namespace Healthbars
 
         private void UpdateHP(int hp)
         {
+            animation.GetClip("HPAnim").ClearCurves();
             AnimationCurve animationCurve = AnimationCurve.EaseInOut(0f, healthBar.sizeDelta.x, .5f, (float)hp / health.maxHP);
             animation.GetClip("HPAnim").SetCurve("", typeof(RectTransform), "m_SizeDelta.x", animationCurve);
             animation.Play("HPAnim");

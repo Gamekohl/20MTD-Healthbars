@@ -8,7 +8,7 @@ A [BepInEx](https://github.com/BepInEx/BepInEx/releases) plugin for adding healt
 ![Screenshot 2022-08-10 234445](https://user-images.githubusercontent.com/108492240/184026396-19fec55e-93aa-466c-8095-910bf1a06aa9.png)
 
 ## Changelog
-- v.1.0.3:  Fixed memory leak
+- v.1.0.4:  Fixed memory leaks
 - v.1.0.2:  Fixed healthbars having the wrong height in some cases
 - v.1.0.1:  Compatibility with new monsters
 - v.1.0.0:   Release
